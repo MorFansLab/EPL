@@ -1,0 +1,133 @@
+<html>
+<head>
+<title>在线易语言代码可视化解析-魔帆博客[MorFans Lab]</title>
+<meta charset="utf-8">
+<a href="http://morfans.cn">返回魔帆博客</a>
+<link href="http://www.runoob.com/try/bootstrap/layoutit/css/bootstrap-combined.min.css" rel="stylesheet">
+<link rel="stylesheet" href="ecode.css" type="text/css"/>
+<script type="text/javascript" src="ecode.js"></script>
+<style>
+#codeshow{overflow:hidden;width:100%;float:left;clear:left;margin-top:20px;}
+</style>
+</head>
+<body>
+<script type="text/javascript">
+function run()
+{
+document.getElementById("codeshow_ecode_1").innerHTML=document.getElementById("code").value
+trans("codeshow");
+}
+window.onload=run;
+</script>
+<div id="LG" class="container-fluid">
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="navbar">
+				<div class="navbar-inner">
+					<div class="container-fluid">
+						<a class="btn btn-navbar" data-target=".navbar-responsive-collapse" data-toggle="collapse"></a> <a class="brand" href="#">MorFans Lab</a>
+						<div class="nav-collapse collapse navbar-responsive-collapse">
+							<ul class="nav">
+								<li class="active">
+									<a href="#">实验室</a>
+								</li>
+								<li>
+									<a href="http://morfans.cn">魔帆博客</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span12">
+			<h3 class="text-center">
+				魔帆易语言在线代码可视化解析
+			</h3>
+			<div class="row-fluid">
+				<div class="span12">
+					<h2>
+						代码：
+					</h2>
+				</div>
+			</div>
+		</div>	
+	</div>	
+<textarea id="code" style="height:200px;width:100%">
+.版本 2
+
+.子程序 GetProcessHandle, 整数型
+.参数 lpProcessName, 文本型
+.局部变量 hSnapShot, 整数型
+.局部变量 dwRet, 整数型
+.局部变量 prHandle, 整数型
+.局部变量 pe32, PROCESSENTRY32
+
+hSnapShot ＝ CreateToolhelp32Snapshot (#TH32CS_SNAPALL, 0)
+.如果真 (hSnapShot ＝ 0)
+    信息框 (“获得进程快照失败”, 0, )
+    返回 (dwRet)
+.如果真结束
+pe32.dwSize ＝ 1024
+prHandle ＝ Process32First (hSnapShot, pe32)
+.判断循环首 (prHandle ≠ 0)
+    .判断开始 (到文本 (pe32.szExeFile) ＝ lpProcessName)
+        dwRet ＝ pe32.th32ProcessID
+        跳出循环 ()
+    .默认
+        prHandle ＝ Process32Next (hSnapShot, pe32)
+    .判断结束
+
+.判断循环尾 ()
+CloseHandle (hSnapShot)
+返回 (dwRet)</textarea>
+<input type="button" class="btn btn-success btn-large btn-block" value="解析代码" onclick="javascript:run()"/>
+<div id="codeshow" >
+<div id="codeshow_ecode_1">
+.版本 2
+
+.子程序 GetProcessHandle, 整数型
+.参数 lpProcessName, 文本型
+.局部变量 hSnapShot, 整数型
+.局部变量 dwRet, 整数型
+.局部变量 prHandle, 整数型
+.局部变量 pe32, PROCESSENTRY32
+
+hSnapShot ＝ CreateToolhelp32Snapshot (#TH32CS_SNAPALL, 0)
+.如果真 (hSnapShot ＝ 0)
+    信息框 (“获得进程快照失败”, 0, )
+    返回 (dwRet)
+.如果真结束
+pe32.dwSize ＝ 1024
+prHandle ＝ Process32First (hSnapShot, pe32)
+.判断循环首 (prHandle ≠ 0)
+    .判断开始 (到文本 (pe32.szExeFile) ＝ lpProcessName)
+        dwRet ＝ pe32.th32ProcessID
+        跳出循环 ()
+    .默认
+        prHandle ＝ Process32Next (hSnapShot, pe32)
+    .判断结束
+
+.判断循环尾 ()
+CloseHandle (hSnapShot)
+返回 (dwRet)
+</div>
+</div>
+</div>
+<br>
+<br>
+<br>
+
+<div class="row-fluid">
+				<div class="span12">
+					<blockquote class="pull-right">
+						<p>
+					<span class="label" contenteditable="true">&copy;2016 MorFans Lab</span>&nbsp;&nbsp; BY:<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2685618862&amp;site=qq&amp;menu=yes" target="_blank">SuperPaxxs</a>
+					</p>
+					</blockquote>					
+				</div>
+			</div>
+</body>
+</html>
